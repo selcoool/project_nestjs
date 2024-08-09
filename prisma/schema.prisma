@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model binhluan {
+  id              Int       @id @default(autoincrement())
+  maPhong         Int
+  maNguoiBinhLuan Int
+  ngayBinhLuan    String?   @db.VarChar(255)
+  noiDung         String?   @db.VarChar(255)
+  saoBinhLuan     Int?
+  phong           phong     @relation(fields: [maPhong], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "binhluan_ibfk_1")
+  nguoidung       nguoidung @relation(fields: [maNguoiBinhLuan], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "binhluan_ibfk_2")
+
+  @@index([maNguoiBinhLuan], map: "maNguoiBinhLuan")
+  @@index([maPhong], map: "maPhong")
+}
+
+model datphong {
+  id           Int        @id @default(autoincrement())
+  maPhong      Int
+  ngayDen      DateTime?  @db.DateTime(0)
+  ngayDi       DateTime?  @db.DateTime(0)
+  soLuongKhach Int?
+  maNguoiDung  Int?
+  phong        phong      @relation(fields: [maPhong], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "datphong_ibfk_1")
+  nguoidung    nguoidung? @relation(fields: [maNguoiDung], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "datphong_ibfk_2")
+
+  @@index([maNguoiDung], map: "maNguoiDung")
+  @@index([maPhong], map: "maPhong")
+}
+
+model nguoidung {
+  id        Int        @id @default(autoincrement())
+  name      String?    @db.VarChar(255)
+  email     String?    @unique(map: "email") @db.VarChar(255)
+  pass_word String?    @db.VarChar(255)
+  phone     String?    @db.VarChar(255)
+  birth_day String?    @db.VarChar(255)
+  gender    String?    @db.VarChar(255)
+  role      String?    @db.VarChar(255)
+  binhluan  binhluan[]
+  datphong  datphong[]
+  phong     phong[]
+}
+
+model phong {
+  id        Int        @id @default(autoincrement())
+  tenPhong  String?    @db.VarChar(255)
+  khach     Int
+  phongNgu  Int?
+  giuong    Int?
+  phongTam  Int?
+  moTa      String?    @db.VarChar(255)
+  giaTien   Int?
+  mayGiat   Boolean?   @default(false)
+  banLa     Boolean?   @default(false)
+  tivi      Boolean?   @default(false)
+  dieuHoa   Boolean?   @default(false)
+  wifi      Boolean?   @default(false)
+  bep       Boolean?   @default(false)
+  doXe      Boolean?   @default(false)
+  hoBoi     Boolean?   @default(false)
+  banUi     Boolean?   @default(false)
+  maViTri   Int
+  hinhAnh   String?    @db.VarChar(255)
+  binhluan  binhluan[]
+  datphong  datphong[]
+  nguoidung nguoidung  @relation(fields: [khach], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "phong_ibfk_1")
+  vitri     vitri      @relation(fields: [maViTri], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "phong_ibfk_2")
+
+  @@index([maViTri], map: "maViTri")
+  @@index([khach], map: "khach")
+}
+
+model vitri {
+  id        Int     @id @default(autoincrement())
+  tenViTri  String? @db.VarChar(255)
+  tinhThanh String? @db.VarChar(255)
+  quocGia   String? @db.VarChar(255)
+  hinhAnh   String? @db.VarChar(255)
+  phong     phong[]
+}
