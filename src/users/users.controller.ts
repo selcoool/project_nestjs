@@ -1,8 +1,8 @@
-import { Body, Controller, Delete, Get, HttpStatus, ParseIntPipe, Post, Put, Query, Res } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Param, ParseIntPipe, Post, Put, Query, Res } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { Response } from 'express';
 import { errorResponse, successResponse } from 'src/utils/response-data.util';
-import { CreateUserDto } from './dtos/CreateUser.dto';
+import { CreateUserDto, FilterUserType } from './dtos/CreateUser.dto';
 import { UpdateUserDto } from './dtos/UpdateUser.dto';
 
 @Controller('users')
@@ -31,31 +31,13 @@ export class UsersController {
       }
     }
     
-    @Put()
-    async updateUser(
-      @Body() updateUserDto: UpdateUserDto,
-      @Res() res: Response
-    ) {
-      try {
-        const { id, ...updateData } = updateUserDto;
-        // Kiểm tra xem id có phải là số hợp lệ không
-        if (isNaN(id) || id <= 0) {
-          return res.status(HttpStatus.BAD_REQUEST).json({
-            message: 'Invalid ID provided',
-          });
-        }
-        const updatedUser = await this.usersService.updateUser(id, updateData);
-        return res.status(HttpStatus.OK).json(successResponse("put",updatedUser,'Success'));
-      } catch (error) {
-        return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(errorResponse("post",error.message,'Error'));
-      }
-    }
+    
 
 
 
     @Delete()
     async deleteUser(
-      @Query('id', ParseIntPipe) id: number,
+      @Param('id', ParseIntPipe) id: number,
       @Res() res: Response
     ) {
       try {
@@ -66,5 +48,76 @@ export class UsersController {
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(errorResponse("delete",error.message,'Error'));
       }
     }
+
+  
+
+
+    @Get('pagination_search')
+    async pagination_search(@Query() filterUserType:FilterUserType, @Res() res: Response){
+      try {
+
+        console.log('ssss',filterUserType)
+        const searchedItems = await this.usersService.pagination_search(filterUserType);
+        // console.log('sssssssss',deletedUser)
+        return res.status(HttpStatus.OK).json(successResponse("get",searchedItems,'Success'));
+      } catch (error) {
+        return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(errorResponse("get",error.message,'Error'));
+      }
+    }
+
+
+    @Get('search')
+    async search_user(@Query() filterUserType:FilterUserType, @Res() res: Response){
+      try {
+        const searchedItems = await this.usersService.search_user(filterUserType);
+        return res.status(HttpStatus.OK).json(successResponse("get",searchedItems,'Success'));
+      } catch (error) {
+        return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(errorResponse("get",error.message,'Error'));
+      }
+    }
+
+
+    @Get(':id')
+    async getDetailUser(
+      @Param('id', ParseIntPipe) id: number,
+      @Res() res: Response
+    ) {
+      try {
+        const users = await this.usersService.getDetailUser(id);
+        console.log('sssssss',users)
+        if (!users) {
+          return res.status(HttpStatus.NOT_FOUND).json(errorResponse("get", "User not found", 'Error'));
+        }
+        return res.status(HttpStatus.OK).json(successResponse("get", users, 'Success'));
+      } catch (error) {
+        return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(errorResponse("get", error.message, 'Error'));
+      }
+    }
+
+
+
+    @Put(':id')
+    async updatelUser(
+      @Param('id', ParseIntPipe) id: number,
+      @Body() updateUserDto: UpdateUserDto,
+      @Res() res: Response
+    ) {
+         try {
+        // console.log('hhhh',"sds")
+        // Kiểm tra xem id có phải là số hợp lệ khôngđ
+        if (isNaN(id) || id <= 0) {
+          return res.status(HttpStatus.BAD_REQUEST).json({
+            message: 'Invalid ID provided',
+          });
+        }
+        const updatedUser = await this.usersService.updateUser(id, updateUserDto);
+        return res.status(HttpStatus.OK).json(successResponse("put",updatedUser,'Success'));
+      } catch (error) {
+        return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(errorResponse("put",error.message,'Error'));
+      }
+    }
+   
+
+    
 
 }

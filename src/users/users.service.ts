@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 
 import { PrismaService } from 'src/prisma.service';
-import { CreateUserDto } from './dtos/CreateUser.dto';
+import { CreateUserDto, FilterUserType } from './dtos/CreateUser.dto';
 import { hash } from 'bcrypt';
 import { UpdateUserDto } from './dtos/UpdateUser.dto';
 
@@ -11,6 +11,12 @@ export class UsersService {
 
     async getUser(){
         return await this.prismaService.nguoidung.findMany({})
+    }
+
+    async getDetailUser(id:number){
+      return await this.prismaService.nguoidung.findUnique({
+        where: { id: id }, // Sử dụng giá trị số
+      })
     }
 
     async createUser(createUserDto: CreateUserDto){
@@ -44,12 +50,12 @@ export class UsersService {
         }
       
         // Loại bỏ id khỏi updateUserDto để tránh cập nhật không mong muốn
-        const { id: _, ...updateData } = updateUserDto;
+        // const { id: _, ...updateData } = updateUserDto;
       
         // Cập nhật thông tin người dùng
         const updatedUser = await this.prismaService.nguoidung.update({
           where: { id: userId }, // Sử dụng giá trị số
-          data: updateData,
+          data: updateUserDto,
         });
       
         return updatedUser;
@@ -72,6 +78,88 @@ export class UsersService {
        })
        return res
      }
+
+     async pagination_search(filterUserType: FilterUserType) {
+      const items_per_page = Number(filterUserType.items_per_page) || Number(process.env.ITEMS_PER_PAGE);
+      const page = Number(filterUserType.page) || 1;
+      const search = filterUserType.search || '';
+      const skip = page > 1 ? (page - 1) * items_per_page : 0;
+    
+      // Extract additional search parameters
+      const { page: _, items_per_page: __, search: ___, ...searchParams } = filterUserType;
+    
+      // Build the dynamic where clause
+      const dynamicSearchParams = {
+        AND: [
+          {
+            // Spread additional search parameters
+            ...Object.fromEntries(
+              Object.entries(searchParams).map(([key, value]) => [
+                key,
+                { contains: value }, // Use contains dynamically for each searchParam without mode
+              ])
+            ),
+          }
+        ],
+      };
+    
+      const users = await this.prismaService.nguoidung.findMany({
+        take: items_per_page,
+        skip,
+        where: dynamicSearchParams,
+      });
+    
+      const total = await this.prismaService.nguoidung.count({
+        where: dynamicSearchParams,
+      });
+    
+      return {
+        pagination_search: users,
+        total,
+        currentPage: page,
+        items_per_page: items_per_page,
+      };
+    }
+
+
+     async search_user(filterUserType:FilterUserType){
+      const items_per_page=Number(filterUserType.items_per_page) || Number(process.env.ITEMS_PER_PAGE);
+      const page =Number(filterUserType.page) || 1 ;
+      const search = filterUserType.search || '' ;
+      const skip=page > 1 ? (page -1) * items_per_page : 0 ;
+      const users= await this.prismaService.nguoidung.findMany({
+         take:items_per_page,
+         skip,
+         where:{
+          AND: [
+             {
+              name:{
+                contains:search
+              }
+             }
+          ]
+         }
+      })
+
+      const total = await this.prismaService.nguoidung.count({
+        where: {
+          AND: [
+             {
+              name:{
+                contains:search
+              }
+             }
+          ]
+         }
+      });
+    
+      return {
+        pagination_search: users,
+        total,
+        currentPage: page,
+        items_per_page: items_per_page,
+      };
+    }
  
 
  

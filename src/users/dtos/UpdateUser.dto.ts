@@ -2,9 +2,9 @@ import { IsOptional, IsString, IsInt } from 'class-validator';
 // import { Type } from 'class-transformer';
 
 export class UpdateUserDto {
-  @IsOptional()
-//   @Type(() => Number) // Đảm bảo chuyển đổi thành số nếu ID có trong body
-  id?: number;
+//   @IsOptional()
+// //   @Type(() => Number) // Đảm bảo chuyển đổi thành số nếu ID có trong body
+//   id?: number;
 
   @IsOptional()
   @IsString()

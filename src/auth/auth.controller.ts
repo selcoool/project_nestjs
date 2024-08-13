@@ -45,4 +45,20 @@ export class AuthController {
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(errorResponse("post",error.message,'Error'));
       }
     }
+
+
+    @Post('signout')
+    async signOut( @Res() res: Response){
+       
+      try {
+        await res.clearCookie('access_token')
+        await res.clearCookie('refresh_token')
+        const message_signout='Đã đăng xuất thành công'
+        return res.status(HttpStatus.OK).json(successResponse("post",message_signout,'Success'))
+      } catch (error) {
+        return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(errorResponse("post",error.message,'Error'));
+      }
+    }
+
+
 }

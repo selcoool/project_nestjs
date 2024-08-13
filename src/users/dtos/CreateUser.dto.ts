@@ -29,3 +29,10 @@ export class CreateUserDto {
   @IsString()
   role?: string;
 }
+
+
+export interface FilterUserType{
+  items_per_page?:number
+  page?:number
+  search?:string
+}
