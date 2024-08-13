@@ -7,6 +7,7 @@ import * as multer from 'multer';
 import { GoogleDriveService } from './upload.service';
 import { DeleteUserDto } from './dtos/DeleteUser.dto';
 import { errorResponse, successResponse } from 'src/utils/response-data.util';
+import { ApiTags } from '@nestjs/swagger';
 
 const memoryStorage = multer.memoryStorage();
 
@@ -24,6 +25,9 @@ const fileFilter = (req: any, file: any, cb: any) => {
   }
 };
 
+
+
+@ApiTags('upload')
 @Controller('upload')
 export class UploadController {
   constructor(private readonly googleDriveService: GoogleDriveService) {}

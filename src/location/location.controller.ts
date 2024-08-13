@@ -9,6 +9,7 @@ import { FileFieldsInterceptor } from '@nestjs/platform-express';
 import * as multer from 'multer';
 import { GoogleDriveService } from 'src/upload/upload.service';
 import { Readable } from 'stream';
+import { ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
 
 const memoryStorage = multer.memoryStorage();
 
@@ -27,6 +28,8 @@ const fileFilter = (req: any, file: any, cb: any) => {
 };
 
 
+
+@ApiTags('location')
 @Controller('location')
 export class LocationController {
     constructor(
@@ -137,6 +140,33 @@ export class LocationController {
       storage: memoryStorage,
       fileFilter: fileFilter,
     }))
+    @ApiConsumes('multipart/form-data')
+    @ApiBody({
+      schema: {
+        type: 'object',
+        properties: {
+          anh_dai_dien: {
+            type: 'array',
+            items: {
+              type: 'string',
+              format: 'binary',
+            },
+          },
+          duong_dan: {
+            type: 'array',
+            items: {
+              type: 'string',
+              format: 'binary',
+            },
+          },
+          // Add properties of `UpdateImageLocation` here
+          // Example:
+          locationId: { type: 'string', description: 'Location ID' },
+          description: { type: 'string', description: 'Description of the location' },
+          // Add other properties of the `UpdateImageLocation` DTO
+        },
+      },
+    })
     async uploadImageLocation(
       @UploadedFiles() files: { anh_dai_dien?: Express.Multer.File[], duong_dan?: Express.Multer.File[] },
       @Body() updateImageLocation: UpdateImageLocation,
@@ -176,15 +206,12 @@ export class LocationController {
  
               const updatedImageLocation = await this.locationService.updateImageLocation(updated_ImageLocation);
               return res.status(HttpStatus.OK).json(successResponse("post",updatedImageLocation,'Success'));
-              //  console.log('op', updated_ImageLocation)
+
             }
-            // console.log('Uploaded file ID:', response.data.id);
+           
           }
         } 
-        // Kiểm tra xem id có phải là số hợp lệ khôngđ
         
-        // const updatedUser = await this.locationService.updateImageLocation(updateImageLocation);
-        // return res.status(HttpStatus.OK).json(successResponse("post",updatedUser,'Success'));
         return res.status(HttpStatus.OK).json(successResponse("post","Have not attached Image",'Error'));
       } catch (error) {
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(errorResponse("post",error.message,'Error'));

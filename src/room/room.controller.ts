@@ -9,7 +9,7 @@ import * as multer from 'multer';
 import { GoogleDriveService } from 'src/upload/upload.service';
 import { Readable } from 'stream';
 import { UpdateImageRoomDto } from './dtos/UpdateImageRoom.dto';
-
+import { ApiTags } from '@nestjs/swagger';
 const memoryStorage = multer.memoryStorage();
 
 const fileFilter = (req: any, file: any, cb: any) => {
@@ -26,7 +26,7 @@ const fileFilter = (req: any, file: any, cb: any) => {
   }
 };
 
-
+@ApiTags('room')
 @Controller('room')
 export class RoomController {
     constructor(

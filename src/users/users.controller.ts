@@ -4,7 +4,9 @@ import { Response } from 'express';
 import { errorResponse, successResponse } from 'src/utils/response-data.util';
 import { CreateUserDto, FilterUserType } from './dtos/CreateUser.dto';
 import { UpdateUserDto } from './dtos/UpdateUser.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('users')
 @Controller('users')
 export class UsersController {
     
