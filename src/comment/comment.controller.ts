@@ -6,10 +6,28 @@ import { CreateCommentDto } from './dtos/CreateComment.dto';
 import { UpdateCommentDto } from './dtos/UpdateComment.dto';
 import { ApiTags } from '@nestjs/swagger';
 
-@ApiTags('comment')
-@Controller('comment')
+@ApiTags('comments')
+@Controller('comments')
 export class CommentController {
     constructor(private  readonly commentService:CommentService){}
+
+    @Get("get-comment-by-room/:maphong")
+    async getCommentByRoom(
+      @Param('maphong', ParseIntPipe) maphong: number,
+        @Res() res: Response){
+        try {
+           
+            
+            // Uncomment and implement the following line to fetch comments based on the room ID
+            const comments = await this.commentService.getCommentByRoom(maphong);
+            
+            // Return a successful response with the comments
+            return res.status(HttpStatus.OK).json(successResponse("get", comments, 'Success'));
+        } catch (error) {
+            // Return an error response in case of failure
+            return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(errorResponse("get", error.message, 'Error'));
+        }
+    }
 
     @Get()
     async getRoom(@Res() res: Response){
@@ -36,20 +54,7 @@ export class CommentController {
             return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(errorResponse("get",error.message,'Error'));
           }
     }
-
-    @Get(":maphong")
-    async getCommentByRoom(
-        @Param('maphong', ParseIntPipe) maphong: number,
-        @Res() res: Response){
-        try {
-            // console.log('manguoibinhluan',manguoibinhluan)
-            // console.log('maphong',maphong)
-            const comments = await this.commentService.getCommentByRoom(maphong);
-            return res.status(HttpStatus.OK).json(successResponse("get",comments,'Success'));
-          } catch (error) {
-            return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(errorResponse("get",error.message,'Error'));
-          }
-    }
+   
 
 
     @Delete(":id")
@@ -101,12 +106,26 @@ export class CommentController {
             message: 'Invalid ID provided',
           });
         }
-        const updatedComment = await this.commentService.updateComment(id, updateCommentDto);
+
+        const {maPhong,maNguoiBinhLuan,saoBinhLuan,...commentDto}=updateCommentDto;
+        const newComment={
+            maPhong:Number(maPhong),
+            maNguoiBinhLuan:Number(maNguoiBinhLuan),
+            saoBinhLuan:Number(saoBinhLuan),
+            ...commentDto
+        }
+      //  console.log('newComment',newComment)
+        
+
+        const updatedComment = await this.commentService.updateComment(id, newComment);
         return res.status(HttpStatus.OK).json(successResponse("put",updatedComment,'Success'));
       } catch (error) {
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(errorResponse("put",error.message,'Error'));
       }
     }
+
+
+    
 
 
 

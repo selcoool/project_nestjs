@@ -7,13 +7,13 @@ async function bootstrap() {
   app.enableCors();
   app.setGlobalPrefix('api');
   const config = new DocumentBuilder()
-  .setTitle('Cats example')
-  .setDescription('The cats API description')
+  .setTitle('API airbnb')
+  .setDescription('Task back-end last term')
   .setVersion('1.0')
-  .addTag('cats')
+  .addTag('Tran Minh Thanh')
   .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('swagger/api', app, document);
   await app.listen(3000);
 }
 bootstrap();

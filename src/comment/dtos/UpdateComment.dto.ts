@@ -1,15 +1,19 @@
 import { Type } from 'class-transformer';
 import { IsString, IsEmail, IsOptional, IsNumber, IsBoolean } from 'class-validator';
 
+
+
 export class UpdateCommentDto {
     
     @IsOptional()
-    @IsNumber()
+    // @IsNumber()
+    @Type(() => Number)
     maPhong?:number
     
 
     @IsOptional()
-    @IsNumber()
+    // @IsNumber()
+    @Type(() => Number)
     maNguoiBinhLuan?:number
     
     @IsOptional()
@@ -23,6 +27,7 @@ export class UpdateCommentDto {
 
 
     @IsOptional()
-    @IsNumber()
+    // @IsNumber()
+    @Type(() => Number)
     saoBinhLuan?:number
 }

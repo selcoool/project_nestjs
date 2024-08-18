@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import * as nodemailer from 'nodemailer';
-import { emailTemplate } from '../templates/email-template';
+import { emailTemplateRegister } from './templates/email-template-register';
 
 @Injectable()
 export class EmailService {
@@ -24,12 +24,12 @@ export class EmailService {
   //     text: text,
   //   };
     async sendEmail(to: string, subject: string, text: string) {
-      const companyName = "Your Company";
-      const unsubscribeLink = "http://example.com/unsubscribe";
+      const companyName = "Welcome to Selcoool";
+      const unsubscribeLink = "https://example.com/unsubscribe";
       const userName='testName';
       const verificationLink= 'https://youtube.com'
       const domain_name='youtu'
-      let htmlr = emailTemplate
+      let htmlr = emailTemplateRegister
         .replace('[USER_NAME]', userName)
         .replace('[VERIFICATION_LINK]', verificationLink)
         .replace('[DOMAIN_LINK]', domain_name)
@@ -42,8 +42,8 @@ export class EmailService {
       const mailOptions = {
         from: '"Maddison Foo Koch 👻" <maddison53@ethereal.email>', // sender address
         to: to, // list of receivers
-        subject: "Hello ✔", // Subject line
-        text: "Hello world?", // plain text body
+        subject: subject, // Subject line
+        text: text, // plain text body
         html: htmlr, // html body
       };
 

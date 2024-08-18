@@ -1,18 +1,25 @@
-import { Body, Controller, Delete, Get, HttpStatus, Param, ParseIntPipe, Post, Put, Query, Res } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Param, ParseIntPipe, Post, Put, Query, Res, UseGuards } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { Response } from 'express';
 import { errorResponse, successResponse } from 'src/utils/response-data.util';
 import { CreateUserDto, FilterUserType } from './dtos/CreateUser.dto';
 import { UpdateUserDto } from './dtos/UpdateUser.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiHeader, ApiTags } from '@nestjs/swagger';
+import { CheckAuthGuard } from 'src/check-auth/check-auth.guard';
 
 @ApiTags('users')
 @Controller('users')
 export class UsersController {
     
     constructor(private usersService:UsersService){}
-
+    
     @Get()
+    // @ApiHeader({
+    //   name: 'tokenMt',
+    //   description: 'This is Tran Minh Thanh API',
+    //   required: true,
+    // })
+    // @UseGuards(CheckAuthGuard)
     async getUser(@Res() res: Response){
         try {
             const users = await this.usersService.getUser();
@@ -26,6 +33,7 @@ export class UsersController {
     async createUser(@Body() createUserDto: CreateUserDto, @Res() res: Response){
        
       try {
+        // console.log('createUserDto',createUserDto)
         const users = await this.usersService.createUser(createUserDto);
         return res.status(HttpStatus.OK).json(successResponse("post",users,'Success'));
       } catch (error) {
@@ -37,14 +45,13 @@ export class UsersController {
 
 
 
-    @Delete()
+    @Delete(':id')
     async deleteUser(
       @Param('id', ParseIntPipe) id: number,
       @Res() res: Response
     ) {
       try {
         const deletedUser = await this.usersService.deleteUser(id);
-        console.log('sssssssss',deletedUser)
         return res.status(HttpStatus.OK).json(successResponse("delete",deletedUser,'Success'));
       } catch (error) {
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(errorResponse("delete",error.message,'Error'));
@@ -58,7 +65,7 @@ export class UsersController {
     async pagination_search(@Query() filterUserType:FilterUserType, @Res() res: Response){
       try {
 
-        console.log('ssss',filterUserType)
+        // console.log('ssss',filterUserType)
         const searchedItems = await this.usersService.pagination_search(filterUserType);
         // console.log('sssssssss',deletedUser)
         return res.status(HttpStatus.OK).json(successResponse("get",searchedItems,'Success'));
@@ -68,10 +75,10 @@ export class UsersController {
     }
 
 
-    @Get('search')
-    async search_user(@Query() filterUserType:FilterUserType, @Res() res: Response){
+    @Get('search/:user_name')
+    async search_user(@Param('user_name') user_name: string,@Query() filterUserType:FilterUserType, @Res() res: Response){
       try {
-        const searchedItems = await this.usersService.search_user(filterUserType);
+        const searchedItems = await this.usersService.search_user(user_name,filterUserType);
         return res.status(HttpStatus.OK).json(successResponse("get",searchedItems,'Success'));
       } catch (error) {
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(errorResponse("get",error.message,'Error'));
@@ -86,7 +93,7 @@ export class UsersController {
     ) {
       try {
         const users = await this.usersService.getDetailUser(id);
-        console.log('sssssss',users)
+        // console.log('sssssss',users)
         if (!users) {
           return res.status(HttpStatus.NOT_FOUND).json(errorResponse("get", "User not found", 'Error'));
         }

@@ -4,10 +4,14 @@ import { PrismaService } from 'src/prisma.service';
 import { CreateUserDto, FilterUserType } from './dtos/CreateUser.dto';
 import { hash } from 'bcrypt';
 import { UpdateUserDto } from './dtos/UpdateUser.dto';
+import { EmailService } from 'src/email.service';
 
 @Injectable()
 export class UsersService {
-    constructor(private prismaService:PrismaService){}
+    constructor(
+      private prismaService:PrismaService,
+      private readonly emailService: EmailService
+    ){}
 
     async getUser(){
         return await this.prismaService.nguoidung.findMany({})
@@ -30,10 +34,19 @@ export class UsersService {
         }
        const hashedPassword= await hash(createUserDto.pass_word, 10)
        
-      const res = await this.prismaService.nguoidung.create({
+      let res = await this.prismaService.nguoidung.create({
         data: {...createUserDto, pass_word:hashedPassword}
       })
-      return res
+
+      await this.emailService.sendEmail(
+        createUserDto.email,        // The recipient's email address
+        "Register successfully",    // The subject of the email
+        "Congratulations!"          // The content/body of the email
+      );
+       
+     const registeredInfor={message: 'The email has been sent to your email', ...res}
+      
+      return registeredInfor
     }
 
     async updateUser(id: number, updateUserDto: UpdateUserDto) {
@@ -122,10 +135,10 @@ export class UsersService {
     }
 
 
-     async search_user(filterUserType:FilterUserType){
+     async search_user(user_name:string,filterUserType:FilterUserType){
       const items_per_page=Number(filterUserType.items_per_page) || Number(process.env.ITEMS_PER_PAGE);
       const page =Number(filterUserType.page) || 1 ;
-      const search = filterUserType.search || '' ;
+      const search = user_name || '' ;
       const skip=page > 1 ? (page -1) * items_per_page : 0 ;
       const users= await this.prismaService.nguoidung.findMany({
          take:items_per_page,
@@ -133,7 +146,7 @@ export class UsersService {
          where:{
           AND: [
              {
-              name:{
+              email:{
                 contains:search
               }
              }
@@ -145,7 +158,7 @@ export class UsersService {
         where: {
           AND: [
              {
-              name:{
+              email:{
                 contains:search
               }
              }

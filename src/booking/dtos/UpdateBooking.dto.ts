@@ -1,25 +1,25 @@
 import { Type } from 'class-transformer';
 import { IsString, IsEmail, IsOptional, IsNumber, IsBoolean,IsDateString } from 'class-validator';
 
-export class CreateBookingDto {
+export class UpdateBookingDto {
    
     @IsNumber()
     @Type(() => Number)
-    maPhong:number
+    maPhong?:number
     
     @IsDateString()
-    ngayDen:string
+    ngayDen?:string
     
     @IsDateString()
-    ngayDi:string  
+    ngayDi?:string  
     
     @IsNumber()
     @Type(() => Number)
-    soLuongKhach:number
+    soLuongKhach?:number
   
     @IsNumber()
     @Type(() => Number)
-    maNguoiDung: number  // phải có thuộc tính này và kiểm này, không có không được
+    maNguoiDung?: number  //có hay không có cũng được
    
 
 }

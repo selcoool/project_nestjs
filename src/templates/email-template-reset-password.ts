@@ -1,5 +1,5 @@
 // src/templates/email-template.ts
-export const emailTemplate = `<!DOCTYPE html>
+export const emailTemplateResetPassword = `<!DOCTYPE html>
 <html lang="en">
 
 <head>
