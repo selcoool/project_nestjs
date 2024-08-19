@@ -59,7 +59,21 @@ export class UsersController {
     }
 
   
-
+    @Get('ggg')
+    // @ApiHeader({
+    //   name: 'tokenMt',
+    //   description: 'This is Tran Minh Thanh API',
+    //   required: true,
+    // })
+    // @UseGuards(CheckAuthGuard)
+    async getUser1(@Res() res: Response){
+        try {
+            const users = "await this.usersService.getUser();"
+            return res.status(HttpStatus.OK).json(successResponse("get",users,'Success'));
+          } catch (error) {
+            return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(errorResponse("get",error.message,'Error'));
+          }
+    }
 
     @Get('pagination_search')
     async pagination_search(@Query() filterUserType:FilterUserType, @Res() res: Response){

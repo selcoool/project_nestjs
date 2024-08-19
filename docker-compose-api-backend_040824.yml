@@ -1,0 +1,16 @@
+services:
+  api_node:
+    container_name: api_nestjs
+    restart: unless-stopped
+    build:
+      context: ./
+    ports:
+      - "5000:5000"
+    networks:
+      - rent_room_network
+    env_file:
+      - ./.env
+
+networks:
+  rent_room_network:
+    driver: bridge
