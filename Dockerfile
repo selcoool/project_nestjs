@@ -16,7 +16,7 @@ COPY . .
 RUN npx prisma generate
 
 # Build ứng dụng
-RUN npm run build
+RUN npm run build --max-old-space-size=512
 
 # Stage 2: Serve the application
 FROM node:18-alpine
