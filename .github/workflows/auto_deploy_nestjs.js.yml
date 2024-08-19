@@ -1,7 +1,7 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: Node.js CI
+name: Deploy to VPS BACKEND_040824
 
 on:
   push:
@@ -10,22 +10,90 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-
+  deploy:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x, 22.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
+    timeout-minutes: 60
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # - name: Display GitHub Username
+    #   run: echo "Repository:" ${{ github.repository }}
+
+    # - name: Display actor Name
+    #   run: echo "Actor:" ${{ github.actor }}
+
+    # - name: Display server VPS_IP
+    #   run: echo "VPS_IP:" ${{ secrets.VPS_IP }}
+
+    # - name: Display server VPS_PASSWORD
+    #   run: echo "VPS_PASSWORD:" ${{ secrets.VPS_PASSWORD }}
+
+    - name: SSH to VPS and update project
+      uses: appleboy/ssh-action@master
       with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+        host: ${{ secrets.VPS_IP }}
+        username: ${{ secrets.VPS_USERNAME }}
+        password: ${{ secrets.VPS_PASSWORD }}  # Sử dụng nếu bạn dùng mật khẩu cho SSH
+        # key: ${{ secrets.VPS_SSH_KEY }}  # Sử dụng nếu bạn dùng khóa SSH
+        script: |
+          echo "Checking if the project directory exists..."
+          if [ -d "/root/project_nestjs" ]; then
+            echo "Tồn tại thư mục dự án"
+            cd /root/project_nestjs
+      
+            git pull
+            docker-compose -f docker-compose-api-project_nestjs.yml up -d --build         
+          else          
+            echo "Không hề tồn tại thư mục dự án"
+            mkdir -p /root/project_nestjs
+            cd /root/project_nestjs
+
+            git clone https://github.com/${{ github.repository }} /root/project_nestjs
+            docker-compose -f docker-compose-api-project_nestjs.yml up -d
+          fi
+          echo "Hoàn thành công việc update API project_nestjs. Chúc mừng bạn đã hoàn thành"
+
+        # script: |
+        #   echo "Xoa thu muc du an"
+        #   rm -rf /root/backend_040824
+        #   echo "Xoa images and container"
+          
+        #   docker stop $(docker ps -aq) || true
+        #   docker rm $(docker ps -aq) || true
+        #   docker rmi $(docker images -q) || true
+        #   docker-compose -f docker-compose-api-backend_040824.yml down
+        #   docker system prune -a -f
+        #   sudo systemctl restart docker
+        #   echo "Xoa du an 1"
+
+
+
+# name: Node.js CI
+
+# on:
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+#     branches: [ "main" ]
+
+# jobs:
+#   build:
+
+#     runs-on: ubuntu-latest
+
+#     strategy:
+#       matrix:
+#         node-version: [18.x, 20.x, 22.x]
+#         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+#     steps:
+#     - uses: actions/checkout@v4
+#     - name: Use Node.js ${{ matrix.node-version }}
+#       uses: actions/setup-node@v4
+#       with:
+#         node-version: ${{ matrix.node-version }}
+#         cache: 'npm'
+#     - run: npm ci
+#     - run: npm run build --if-present
+#     - run: npm test
