@@ -1,7 +1,7 @@
 services:
   api_node:
     container_name: api_nestjs
-    restart: unless-stopped
+    restart: always
     build:
       context: ./
     ports:
