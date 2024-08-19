@@ -1,69 +1,37 @@
 # Stage 1: Build the application
 FROM node:18-alpine AS build
+
 WORKDIR /app
 
-# Sao chép package.json và package-lock.json trước để tận dụng cache
 COPY package*.json ./
-RUN npm ci
+# RUN npm install
+RUN npm install
 
-# Sao chép mã nguồn và build
 COPY . .
+
+# # Copy the .env file
+# COPY .env .env
+
+# Generate Prisma Client if needed
 RUN npx prisma generate
+
 RUN npm run build
 
 # Stage 2: Serve the application
 FROM node:18-alpine
+
 WORKDIR /app
 
-# Sao chép từ stage build
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/package*.json ./
+COPY --from=build /app/.env .env
 
-# Mở cổng cần thiết
+# Expose the port the app runs on
 EXPOSE 5000
 
-# Lệnh khởi chạy ứng dụng
+# Command to run the application
 CMD ["node", "dist/main"]
-
-
-
-
-
-# # Stage 1: Build the application
-# FROM node:18-alpine AS build
-
-# WORKDIR /app
-
-# COPY package*.json ./
-# # RUN npm install
-# RUN npm ci
-
-# COPY . .
-
-# # # Copy the .env file
-# # COPY .env .env
-
-# # Generate Prisma Client if needed
-# RUN npx prisma generate
-
-# RUN npm run build
-
-# # Stage 2: Serve the application
-# FROM node:18-alpine
-
-# WORKDIR /app
-
-# COPY --from=build /app/dist ./dist
-# COPY --from=build /app/node_modules ./node_modules
-# COPY --from=build /app/package*.json ./
-# COPY --from=build /app/.env .env
-
-# # Expose the port the app runs on
-# EXPOSE 5000
-
-# # Command to run the application
-# CMD ["node", "dist/main"]
 
 
 
