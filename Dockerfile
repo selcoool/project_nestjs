@@ -1,8 +1,12 @@
 # Stage 1: Build the application
 FROM node:18-alpine AS build
 WORKDIR /app
+
+# Sao chép package.json và package-lock.json trước để tận dụng cache
 COPY package*.json ./
 RUN npm ci
+
+# Sao chép mã nguồn và build
 COPY . .
 RUN npx prisma generate
 RUN npm run build
@@ -10,11 +14,18 @@ RUN npm run build
 # Stage 2: Serve the application
 FROM node:18-alpine
 WORKDIR /app
+
+# Sao chép từ stage build
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/package*.json ./
+
+# Mở cổng cần thiết
 EXPOSE 5000
+
+# Lệnh khởi chạy ứng dụng
 CMD ["node", "dist/main"]
+
 
 
 
