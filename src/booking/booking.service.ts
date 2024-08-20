@@ -12,6 +12,12 @@ export class BookingService
         return await this.prismaService.datphong.findMany({})
     }
 
+
+    async getDetailRoom(id: number) {
+      return await this.prismaService.datphong.findFirst({
+        where: { id: id }
+      });
+    }
  
 
     async getBookingByUser(id: number) {

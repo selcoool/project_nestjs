@@ -1,0 +1,1859 @@
+{
+	"info": {
+		"_postman_id": "1f889d76-4a59-4f15-a3b3-e3ac6359b5fe",
+		"name": "API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28094189"
+	},
+	"item": [
+		{
+			"name": "api/auth/signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Tran Minh Thanh",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "trmthanhpro@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "pass_word",
+							"value": "159753",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "123456789",
+							"type": "text"
+						},
+						{
+							"key": "birth_day",
+							"value": "1989-06-06",
+							"type": "text"
+						},
+						{
+							"key": "gender",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "user",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/auth/signin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "trmthanhpro@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "pass_word",
+							"value": "159753",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Tran Minh Thanh",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "email3@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "pass_word",
+							"value": "pass_word1",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "0347317345",
+							"type": "text"
+						},
+						{
+							"key": "birth_day",
+							"value": "1985-03-03",
+							"type": "text"
+						},
+						{
+							"key": "gender",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "user",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzEsIm5hbWUiOiJUcmFuIE1pbmggVGhhbmgiLCJlbWFpbCI6InRybXRoYW5ocHJvQGdtYWlsLmNvbSIsImlhdCI6MTcyNDE2ODA0MCwiZXhwIjoxNzI0MTcxNjQwfQ.DHE7Xi8QsbwIQvSPgWaAtxEw__-T0dmEenzZWN90gh4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/users",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/users/29",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"29"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/users/pagination_search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/users/pagination_search?name=Minh&&email=jane",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"pagination_search"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Minh"
+						},
+						{
+							"key": null,
+							"value": null
+						},
+						{
+							"key": "email",
+							"value": "jane"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/users/search/{user_name}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/users/search/jane",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"search",
+						"jane"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/users/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/users/29",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"29"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/users/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "role",
+							"value": "user",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "gender",
+							"value": "male",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "Tran Minh Thanh  updated",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users/29",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"29"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/rooms",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tenPhong",
+							"value": "tenPhong",
+							"type": "text"
+						},
+						{
+							"key": "khach",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "phongNgu",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "giuong",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "phongTam",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "moTa",
+							"value": "3333333333333333333333333333333333",
+							"type": "text"
+						},
+						{
+							"key": "giaTien",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "maViTri",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "hinhAnh",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/rooms",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"rooms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/rooms/{id}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tenPhong",
+							"value": "tenPhong ",
+							"type": "text"
+						},
+						{
+							"key": "khach",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "phongNgu",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "giuong",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "phongTam",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "moTa",
+							"value": "3333333333333333333333333333333333",
+							"type": "text"
+						},
+						{
+							"key": "giaTien",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "maViTri",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "hinhAnh",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/rooms/55",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"rooms",
+						"55"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/rooms",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tenPhong",
+							"value": "Master Room 2",
+							"type": "text"
+						},
+						{
+							"key": "khach",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "phongNgu",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "giuong",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "phongTam",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "moTa",
+							"value": "Nhà đẹp",
+							"type": "text"
+						},
+						{
+							"key": "giaTien",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "maViTri",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "hinhAnh",
+							"type": "file",
+							"src": "/C:/Users/trmth/Pictures/TABLE_DATA.PNG",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/rooms",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"rooms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/rooms/get_room_location",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tenPhong",
+							"value": "tenPhong",
+							"type": "text"
+						},
+						{
+							"key": "khach",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "phongNgu",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "giuong",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "phongTam",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "moTa",
+							"value": "3333333333333333333333333333333333",
+							"type": "text"
+						},
+						{
+							"key": "giaTien",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "maViTri",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "hinhAnh",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/rooms/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"rooms",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/rooms/pagination_search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tenPhong",
+							"value": "tenPhong",
+							"type": "text"
+						},
+						{
+							"key": "khach",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "phongNgu",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "giuong",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "phongTam",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "moTa",
+							"value": "3333333333333333333333333333333333",
+							"type": "text"
+						},
+						{
+							"key": "giaTien",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "maViTri",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "hinhAnh",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/rooms/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"rooms",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/rooms/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tenPhong",
+							"value": "tenPhong",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "khach",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "phongNgu",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "giuong",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "phongTam",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "moTa",
+							"value": "3333333333333333333333333333333333",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "giaTien",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "maViTri",
+							"value": "4",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "hinhAnh",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/rooms/59",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"rooms",
+						"59"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/rooms/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tenPhong",
+							"value": "tenPhong 2",
+							"type": "text"
+						},
+						{
+							"key": "khach",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "phongNgu",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "giuong",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "phongTam",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "moTa",
+							"value": "3333333333333333333333333333333333",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "giaTien",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "maViTri",
+							"value": "4",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "hinhAnh",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/rooms/32",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"rooms",
+						"32"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/rooms/upload_image_room",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tenPhong",
+							"value": "tenPhong 2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "khach",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "phongNgu",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "giuong",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "phongTam",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "moTa",
+							"value": "3333333333333333333333333333333333",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "giaTien",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "maViTri",
+							"value": "4",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "hinhAnh",
+							"type": "file",
+							"src": "/C:/Users/trmth/Pictures/anh3.PNG"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/rooms/32",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"rooms",
+						"32"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/location",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tenPhong",
+							"value": "tenPhong 2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "khach",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "phongNgu",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "giuong",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "phongTam",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "moTa",
+							"value": "3333333333333333333333333333333333",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "giaTien",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "maViTri",
+							"value": "4",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "hinhAnh",
+							"type": "file",
+							"src": "/C:/Users/trmth/Pictures/anh3.PNG"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/location",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"location"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/location",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "tenViTri",
+							"value": "tenViTri",
+							"type": "text"
+						},
+						{
+							"key": "tinhThanh",
+							"value": "tinhThanh",
+							"type": "text"
+						},
+						{
+							"key": "quocGia",
+							"value": "quocGia",
+							"type": "text"
+						},
+						{
+							"key": "hinhAnh",
+							"value": "hinhAnh",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/location",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"location"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/location",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "tenViTri",
+							"value": "tenViTri",
+							"type": "text"
+						},
+						{
+							"key": "tinhThanh",
+							"value": "tinhThanh",
+							"type": "text"
+						},
+						{
+							"key": "quocGia",
+							"value": "quocGia",
+							"type": "text"
+						},
+						{
+							"key": "hinhAnh",
+							"value": "hinhAnh",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/location/pagination_search?search=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"location",
+						"pagination_search"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/location/{id}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "tenViTri",
+							"value": "tenViTri",
+							"type": "text"
+						},
+						{
+							"key": "tinhThanh",
+							"value": "tinhThanh",
+							"type": "text"
+						},
+						{
+							"key": "quocGia",
+							"value": "quocGia",
+							"type": "text"
+						},
+						{
+							"key": "hinhAnh",
+							"value": "hinhAnh",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/location/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"location",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/location/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "tenViTri",
+							"value": "tenViTri",
+							"type": "text"
+						},
+						{
+							"key": "tinhThanh",
+							"value": "tinhThanh",
+							"type": "text"
+						},
+						{
+							"key": "quocGia",
+							"value": "quocGia",
+							"type": "text"
+						},
+						{
+							"key": "hinhAnh",
+							"value": "hinhAnh",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/location/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"location",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/location/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "tenViTri",
+							"value": "tenViTri",
+							"type": "text"
+						},
+						{
+							"key": "tinhThanh",
+							"value": "tinhThanh",
+							"type": "text"
+						},
+						{
+							"key": "quocGia",
+							"value": "quocGia",
+							"type": "text"
+						},
+						{
+							"key": "hinhAnh",
+							"value": "hinhAnh",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/location/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"location",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/location/upload_image_location",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "hinhAnh",
+							"type": "file",
+							"src": "/C:/Users/trmth/Pictures/anh3.PNG"
+						},
+						{
+							"key": "id",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/location/upload_image_location",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"location",
+						"upload_image_location"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/comments",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "hinhAnh",
+							"type": "file",
+							"src": "/C:/Users/trmth/Pictures/anh3.PNG"
+						},
+						{
+							"key": "id",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/comments/get-comment-by-room/{maphong}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/comments/xinchao/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"comments",
+						"xinchao",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/comments/{manguoibinhluan}/{maphong}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "hinhAnh",
+							"type": "file",
+							"src": "/C:/Users/trmth/Pictures/anh3.PNG"
+						},
+						{
+							"key": "id",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/comments/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "hinhAnh",
+							"type": "file",
+							"src": "/C:/Users/trmth/Pictures/anh3.PNG"
+						},
+						{
+							"key": "id",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/comments/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"comments",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/comments",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "maPhong",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "maNguoiBinhLuan",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "ngayBinhLuan",
+							"value": "2023-08-05",
+							"type": "text"
+						},
+						{
+							"key": "noiDung",
+							"value": "xin chao",
+							"type": "text"
+						},
+						{
+							"key": "saoBinhLuan",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/comments/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "maPhong",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "maNguoiBinhLuan",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "ngayBinhLuan",
+							"value": "2023-08-05",
+							"type": "text"
+						},
+						{
+							"key": "noiDung",
+							"value": "xin chao",
+							"type": "text"
+						},
+						{
+							"key": "saoBinhLuan",
+							"value": "4",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/comments/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"comments",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/booking",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "maPhong",
+							"value": "5",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "maNguoiBinhLuan",
+							"value": "5",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "ngayBinhLuan",
+							"value": "2023-08-05",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "noiDung",
+							"value": "xin chao",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "saoBinhLuan",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/booking",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/booking/{id}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "maPhong",
+							"value": "5",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "maNguoiBinhLuan",
+							"value": "5",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "ngayBinhLuan",
+							"value": "2023-08-05",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "noiDung",
+							"value": "xin chao",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "saoBinhLuan",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/booking/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"booking",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/booking/get-booking-user/{id}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "maPhong",
+							"value": "5",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "maNguoiBinhLuan",
+							"value": "5",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "ngayBinhLuan",
+							"value": "2023-08-05",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "noiDung",
+							"value": "xin chao",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "saoBinhLuan",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/booking/get-booking-user/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"booking",
+						"get-booking-user",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/booking",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "maPhong",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "ngayDen",
+							"value": "2024-08-13 14:00:00",
+							"type": "text"
+						},
+						{
+							"key": "ngayDi",
+							"value": "2024-09-13 14:00:00",
+							"type": "text"
+						},
+						{
+							"key": "soLuongKhach",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "maNguoiDung",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/booking",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/booking/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "maPhong",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "ngayDen",
+							"value": "2024-08-13 14:00:00",
+							"type": "text"
+						},
+						{
+							"key": "ngayDi",
+							"value": "2024-09-20 14:00:00",
+							"type": "text"
+						},
+						{
+							"key": "soLuongKhach",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "maNguoiDung",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/booking/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"booking",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/booking/{id}",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"column\": 4, // Index of the column to update (0-based)\r\n  \"newValue\": \"new_image_url2.jpg\" // New value to set\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/worksheet/update_row?searchValue=8&sheetName=MinhThanh1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"worksheet",
+						"update_row"
+					],
+					"query": [
+						{
+							"key": "searchValue",
+							"value": "8"
+						},
+						{
+							"key": "sheetName",
+							"value": "MinhThanh1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -267,7 +267,7 @@ export class RoomService {
     });
 
     if (!checkRoom) {
-      this.deleteNoNeedImage(checkRoom,"hinhAnh")
+      this.deleteNoNeedImage(updateRoomDto,"hinhAnh")
       throw new HttpException('Room not found', HttpStatus.NOT_FOUND);
     }
 
@@ -304,6 +304,7 @@ export class RoomService {
     });
 
     if (!checkRoom) {
+     
       throw new HttpException('Room not found', HttpStatus.NOT_FOUND);
     }
 

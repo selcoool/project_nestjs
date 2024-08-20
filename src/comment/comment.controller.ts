@@ -1,10 +1,11 @@
-import { Body, Controller, Delete, Get, HttpStatus, Param, ParseIntPipe, Post, Put, Res } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Param, ParseIntPipe, Post, Put, Res, UseGuards } from '@nestjs/common';
 import { Response } from 'express';
 import { errorResponse, successResponse } from 'src/utils/response-data.util';
 import { CommentService } from './comment.service';
 import { CreateCommentDto } from './dtos/CreateComment.dto';
 import { UpdateCommentDto } from './dtos/UpdateComment.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { CheckAuthGuard } from 'src/check-auth/check-auth.guard';
 
 @ApiTags('comments')
 @Controller('comments')
@@ -30,6 +31,7 @@ export class CommentController {
     }
 
     @Get()
+    // @UseGuards(CheckAuthGuard)
     async getRoom(@Res() res: Response){
         try {
             const rooms = await this.commentService.getComment();
@@ -41,6 +43,7 @@ export class CommentController {
 
 
     @Get(":manguoibinhluan/:maphong")
+    // @UseGuards(CheckAuthGuard)
     async getDetailRoom(
         @Param('manguoibinhluan', ParseIntPipe) manguoibinhluan: number,
         @Param('maphong', ParseIntPipe) maphong: number,
@@ -58,6 +61,7 @@ export class CommentController {
 
 
     @Delete(":id")
+    // @UseGuards(CheckAuthGuard)
     async deleteComment(
       @Param('id', ParseIntPipe) id: number,
       @Res() res: Response
@@ -71,6 +75,7 @@ export class CommentController {
     }
 
     @Post()
+    // @UseGuards(CheckAuthGuard)
     async createRoom(@Body() createCommentDto: CreateCommentDto,@Res() res: Response){
         try {
 
@@ -93,6 +98,7 @@ export class CommentController {
 
 
     @Put(':id')
+    // @UseGuards(CheckAuthGuard)
     async updatelComment(
       @Param('id', ParseIntPipe) id: number,
       @Body() updateCommentDto: UpdateCommentDto,

@@ -9,11 +9,7 @@ export class CheckAuthGuard implements CanActivate {
   constructor(private readonly jwtService: JwtService) {}
 
   async canActivate(context: ExecutionContext){
-    // const request = context.switchToHttp().getRequest();
-    // const token = this.extractTokenFromHeader(request);
-    // if (!token) {
-    //   throw new UnauthorizedException();
-    // }
+   
    
     try {
       const request = context.switchToHttp().getRequest();
@@ -21,7 +17,7 @@ export class CheckAuthGuard implements CanActivate {
       const payload = await this.jwtService.verifyAsync(
         token,
         {
-          secret: process.env.REFRESH_TOKEN_KEY
+          secret: process.env.ACCESS_TOKEN_KEY
         }
       );
 
@@ -41,6 +37,13 @@ export class CheckAuthGuard implements CanActivate {
   
   }
 
+
+   // const request = context.switchToHttp().getRequest();
+    // const token = this.extractTokenFromHeader(request);
+    // if (!token) {
+    //   throw new UnauthorizedException();
+    // }
+    
   // private extractTokenFromHeader(request: Request): string | undefined {
   //   const [type, token] = request.headers.authorization?.split(' ') ?? [];
   //   return type === 'Bearer' ? token : undefined;

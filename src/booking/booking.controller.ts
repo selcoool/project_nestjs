@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpStatus, Param, ParseIntPipe, Post, Put, Res } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Param, ParseIntPipe, Post, Put, Res, UseGuards } from '@nestjs/common';
 import { Response } from 'express';
 
 import { ApiTags } from '@nestjs/swagger';
@@ -6,6 +6,7 @@ import { errorResponse, successResponse } from 'src/utils/response-data.util';
 import { BookingService } from './booking.service';
 import { CreateBookingDto } from './dtos/CreateBooking.dto';
 import { UpdateBookingDto } from './dtos/UpdateBooking.dto';
+import { CheckAuthGuard } from 'src/check-auth/check-auth.guard';
 
 
 @ApiTags('booking')
@@ -14,6 +15,7 @@ export class BookingController {
     constructor(private  readonly bookingService:BookingService){}
 
     @Get()
+    @UseGuards(CheckAuthGuard)
     async getRoom(@Res() res: Response){
         try {
             const bookings = await this.bookingService.getBooking();
@@ -24,7 +26,24 @@ export class BookingController {
           }
     }
 
+
+    @Get(':id')
+    @UseGuards(CheckAuthGuard)
+    async getDetailRoom(
+      @Param('id', ParseIntPipe) id: number,
+      @Res() res: Response
+    ){
+        try {
+            const bookings = await this.bookingService.getDetailRoom(id);
+            return res.status(HttpStatus.OK).json(successResponse("get",bookings,'Success'));
+          } catch (error) {
+            return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(errorResponse("get",error.message,'Error'));
+
+          }
+    }
+
     @Get('get-booking-user/:id')
+    @UseGuards(CheckAuthGuard)
     async getBookingByUser(
       @Param('id', ParseIntPipe) id: number,
       @Res() res: Response
@@ -63,6 +82,7 @@ export class BookingController {
     }
 
     @Put(':id')
+    @UseGuards(CheckAuthGuard)
     async updateBooking(
       @Param('id', ParseIntPipe) id: number,
       @Body() updateBookingDto: UpdateBookingDto,
@@ -96,6 +116,7 @@ export class BookingController {
 
 
     @Delete(':id')
+    @UseGuards(CheckAuthGuard)
     async deleteUser(
       @Param('id', ParseIntPipe) id: number,
       @Res() res: Response
