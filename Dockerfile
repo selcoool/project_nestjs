@@ -1,39 +1,80 @@
-# Stage 1: Build the application
-FROM node:18-alpine AS build
+# Use the official Node.js image as the base image
+FROM node:20-alpine
 
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy package.json và package-lock.json trước để tận dụng cache
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Cài đặt các gói phụ thuộc
+# Install dependencies, including development dependencies (for Prisma)
 RUN npm ci
 
-# Sao chép toàn bộ mã nguồn
+# Install Nest CLI locally
+RUN npm install @nestjs/cli
+
+# Add node_modules/.bin to PATH
+ENV PATH /app/node_modules/.bin:$PATH
+
+# Copy the rest of the application files
 COPY . .
 
-# Tạo Prisma Client nếu cần
+# Run Prisma generate to create the Prisma Client
 RUN npx prisma generate
 
-# Build ứng dụng
-RUN npm run build --max-old-space-size=512
+# Build the application
+RUN npm run build
 
-# Stage 2: Serve the application
-FROM node:18-alpine
+# Expose the port the app runs on
+EXPOSE 3000
 
-WORKDIR /app
-
-# Copy từ build stage
-COPY --from=build /app/dist ./dist
-COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/package*.json ./
-COPY --from=build /app/.env .env
-
-# Mở cổng ứng dụng
-EXPOSE 5000
-
-# Lệnh để chạy ứng dụng
+# Start the application
 CMD ["npm", "run", "start:prod"]
+
+
+
+
+
+
+
+
+
+# # Stage 1: Build the application
+# FROM node:18-alpine AS build
+
+# WORKDIR /app
+
+# # Copy package.json và package-lock.json trước để tận dụng cache
+# COPY package*.json ./
+
+# # Cài đặt các gói phụ thuộc
+# RUN npm ci
+
+# # Sao chép toàn bộ mã nguồn
+# COPY . .
+
+# # Tạo Prisma Client nếu cần
+# RUN npx prisma generate
+
+# # Build ứng dụng
+# RUN npm run build --max-old-space-size=512
+
+# # Stage 2: Serve the application
+# FROM node:18-alpine
+
+# WORKDIR /app
+
+# # Copy từ build stage
+# COPY --from=build /app/dist ./dist
+# COPY --from=build /app/node_modules ./node_modules
+# COPY --from=build /app/package*.json ./
+# COPY --from=build /app/.env .env
+
+# # Mở cổng ứng dụng
+# EXPOSE 3000
+
+# # Lệnh để chạy ứng dụng
+# CMD ["npm", "run", "start:prod"]
 
 
 
