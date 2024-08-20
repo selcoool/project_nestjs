@@ -1,65 +1,24 @@
-# Use the official Node.js image as the base image
-FROM node:20-alpine
+# Stage 1: Build the application
+FROM node:18-alpine AS build
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json
+# Copy package.json và package-lock.json trước để tận dụng cache
 COPY package*.json ./
 
-# Install dependencies, including development dependencies (for Prisma)
+# Cài đặt các gói phụ thuộc
 RUN npm ci
 
-# Install Nest CLI locally
-RUN npm install @nestjs/cli
-
-# Add node_modules/.bin to PATH
-ENV PATH /app/node_modules/.bin:$PATH
-
-# Copy the rest of the application files
+# Sao chép toàn bộ mã nguồn
 COPY . .
 
-# Run Prisma generate to create the Prisma Client
+# Tạo Prisma Client nếu cần
 RUN npx prisma generate
 
-# Build the application
-RUN npm run build
+# Build ứng dụng
+RUN npm run build 
 
-# Expose the port the app runs on
-EXPOSE 3000
-
-# Start the application
-CMD ["npm", "run", "start:prod"]
-
-
-
-
-
-
-
-
-
-# # Stage 1: Build the application
-# FROM node:18-alpine AS build
-
-# WORKDIR /app
-
-# # Copy package.json và package-lock.json trước để tận dụng cache
-# COPY package*.json ./
-
-# # Cài đặt các gói phụ thuộc
-# RUN npm ci
-
-# # Sao chép toàn bộ mã nguồn
-# COPY . .
-
-# # Tạo Prisma Client nếu cần
-# RUN npx prisma generate
-
-# # Build ứng dụng
-# RUN npm run build --max-old-space-size=512
-
-# # Stage 2: Serve the application
+# Stage 2: Serve the application
 # FROM node:18-alpine
 
 # WORKDIR /app
@@ -68,13 +27,13 @@ CMD ["npm", "run", "start:prod"]
 # COPY --from=build /app/dist ./dist
 # COPY --from=build /app/node_modules ./node_modules
 # COPY --from=build /app/package*.json ./
-# COPY --from=build /app/.env .env
 
-# # Mở cổng ứng dụng
-# EXPOSE 3000
 
-# # Lệnh để chạy ứng dụng
-# CMD ["npm", "run", "start:prod"]
+# Mở cổng ứng dụng
+EXPOSE 3000
+
+# Lệnh để chạy ứng dụng
+CMD ["npm", "run", "start:prod"]
 
 
 
