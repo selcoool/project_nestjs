@@ -29,36 +29,36 @@ jobs:
         host: ${{ secrets.VPS_IP }}
         username: ${{ secrets.VPS_USERNAME }}
         password: ${{ secrets.VPS_PASSWORD }}  # Sử dụng nếu bạn dùng mật khẩu cho SSH
-        # script: |
-        #   echo "Checking if the project directory exists..."
-        #   if [ -d "/root/project_nestjs" ]; then
-        #     echo "Tồn tại thư mục dự án"
-        #     cd /root/project_nestjs
-
-        #     git pull
-        #     docker-compose -f docker-compose-api-project_nestjs.yml up -d --build --timeout 3000
-        #   else
-        #     echo "Không hề tồn tại thư mục dự án"
-        #     mkdir -p /root/project_nestjs
-        #     cd /root/project_nestjs
-
-        #     git clone https://github.com/${{ github.repository }} /root/project_nestjs
-        #     docker-compose -f docker-compose-api-project_nestjs.yml up -d --timeout 3000
-        #   fi
-        #   echo "Hoàn thành công việc update API project_nestjs. Chúc mừng bạn đã hoàn thành"
-
         script: |
-          echo "Xoa thu muc du an"
-          rm -rf /root/project_nestjs
-          echo "Xoa images and container"
+          echo "Checking if the project directory exists..."
+          if [ -d "/root/project_nestjs" ]; then
+            echo "Tồn tại thư mục dự án"
+            cd /root/project_nestjs
+
+            git pull
+            docker-compose -f docker-compose-api-project_nestjs.yml up -d --build --timeout 3000
+          else
+            echo "Không hề tồn tại thư mục dự án"
+            mkdir -p /root/project_nestjs
+            cd /root/project_nestjs
+
+            git clone https://github.com/${{ github.repository }} /root/project_nestjs
+            docker-compose -f docker-compose-api-project_nestjs.yml up -d --timeout 3000
+          fi
+          echo "Hoàn thành công việc update API project_nestjs. Chúc mừng bạn đã hoàn thành"
+
+        # script: |
+        #   echo "Xoa thu muc du an"
+        #   rm -rf /root/project_nestjs
+        #   echo "Xoa images and container"
           
-          docker stop $(docker ps -aq) || true
-          docker rm $(docker ps -aq) || true
-          docker rmi $(docker images -q) || true
-          docker-compose -f docker-compose-api-project_nestjs.yml down
-          docker system prune -a -f
-          sudo systemctl restart docker
-          echo "Xoa du an 1"
+        #   docker stop $(docker ps -aq) || true
+        #   docker rm $(docker ps -aq) || true
+        #   docker rmi $(docker images -q) || true
+        #   docker-compose -f docker-compose-api-project_nestjs.yml down
+        #   docker system prune -a -f
+        #   sudo systemctl restart docker
+        #   echo "Xoa du an 1"
 
 
 
