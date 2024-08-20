@@ -19,7 +19,7 @@ export class UsersController {
     //   description: 'This is Tran Minh Thanh API',
     //   required: true,
     // })
-    @UseGuards(CheckAuthGuard)
+  
     async getUser(@Res() res: Response){
         try {
             const users = await this.usersService.getUser();
