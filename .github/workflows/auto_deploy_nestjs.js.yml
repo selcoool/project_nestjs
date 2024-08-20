@@ -37,6 +37,7 @@ jobs:
 
             git pull
             docker-compose -f docker-compose-api-project_nestjs.yml up -d --build --timeout 3000
+            docker system prune -f
           else
             echo "Không hề tồn tại thư mục dự án"
             mkdir -p /root/project_nestjs
@@ -44,6 +45,7 @@ jobs:
 
             git clone https://github.com/${{ github.repository }} /root/project_nestjs
             docker-compose -f docker-compose-api-project_nestjs.yml up -d --timeout 3000
+            docker system prune -f
           fi
           echo "Hoàn thành công việc update API project_nestjs. Chúc mừng bạn đã hoàn thành"
 
