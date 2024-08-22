@@ -19,14 +19,13 @@ services:
     image: 'jc21/nginx-proxy-manager:latest'
     container_name: nginx_proxy_manager
     restart: unless-stopped
-    ports:
-      - '80:80'
-      - '443:443'
-      - '81:81'
     volumes:
-      - ./data:/data
-      - ./letsencrypt:/etc/letsencrypt
       - ./nginx:/etc/nginx/conf.d
+      - ./letsencrypt:/etc/letsencrypt
+    ports:
+      - "80:80"
+      - "443:443"
+      - "81:81"
     networks:
       - rent_room_network
 
