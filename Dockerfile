@@ -29,7 +29,7 @@ COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/package*.json ./
 
 # Mở cổng ứng dụng
-EXPOSE 4500
+EXPOSE 5000
 
 # Lệnh để chạy ứng dụng
 CMD ["npm", "run", "start:prod"]

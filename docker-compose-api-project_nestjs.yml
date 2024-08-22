@@ -70,7 +70,7 @@ services:
     build:
       context: ./
     ports:
-      - "4500:4500"
+      - "5000:5000"
     networks:
       - rent_room_network
     env_file:
