@@ -1,28 +1,14 @@
 services:
   nginx:
     image: nginx:latest
-    container_name: nginx
-    restart: unless-stopped
+    restart: always
     ports:
-      - '80:80'
-      - '443:443'
+      - "80:80"
+      - "443:443"
     volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./data:/data
-      - ./letsencrypt:/etc/letsencrypt
+      - ./nginx/conf.d:/etc/nginx/conf.d  # Ánh xạ thư mục chứa cấu hình Nginx vào container
     networks:
       - rent_room_network
-    depends_on:
-      - certbot
-
-  certbot:
-    image: certbot/certbot
-    container_name: certbot
-    restart: unless-stopped
-    volumes:
-      - ./data:/data
-      - ./letsencrypt:/etc/letsencrypt
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done'"
 
   api_node:
     container_name: api_nestjs
