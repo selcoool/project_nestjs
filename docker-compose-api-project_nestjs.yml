@@ -1,17 +1,6 @@
-services:
-  app:
-    image: 'jc21/nginx-proxy-manager:latest'
-    restart: unless-stopped
-    ports:
-      - '80:80'
-      - '81:81'
-      - '443:443'
-    volumes:
-      - ./data:/data
-      - ./letsencrypt:/etc/letsencrypt
-    networks:
-      - rent_room_network
 
+
+services:
   api_node:
     container_name: api_nestjs
     restart: always
@@ -24,8 +13,71 @@ services:
     env_file:
       - ./.env
     depends_on:
-      - app
+      - nginx-proxy-manager
+
+  nginx-proxy-manager:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: nginx_proxy_manager
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+      - '81:81'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+      - ./nginx:/etc/nginx/conf.d
+    networks:
+      - rent_room_network
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - ./letsencrypt:/etc/letsencrypt
+      - ./nginx:/etc/nginx/conf.d
+      - ./www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    depends_on:
+      - nginx-proxy-manager
+    networks:
+      - rent_room_network
 
 networks:
   rent_room_network:
     driver: bridge
+
+
+
+
+# services:
+#   app:
+#     image: 'jc21/nginx-proxy-manager:latest'
+#     restart: unless-stopped
+#     ports:
+#       - '80:80'
+#       - '81:81'
+#       - '443:443'
+#     volumes:
+#       - ./data:/data
+#       - ./letsencrypt:/etc/letsencrypt
+#     networks:
+#       - rent_room_network
+
+#   api_node:
+#     container_name: api_nestjs
+#     restart: always
+#     build:
+#       context: ./
+#     ports:
+#       - "5000:5000"
+#     networks:
+#       - rent_room_network
+#     env_file:
+#       - ./.env
+#     depends_on:
+#       - app
+
+# networks:
+#   rent_room_network:
+#     driver: bridge

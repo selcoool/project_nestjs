@@ -30,7 +30,7 @@ RUN npm run build
 
 
 # Mở cổng ứng dụng
-EXPOSE 3000
+EXPOSE 5000
 
 # Lệnh để chạy ứng dụng
 CMD ["npm", "run", "start:prod"]
