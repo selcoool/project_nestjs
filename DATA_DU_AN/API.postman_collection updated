@@ -52,12 +52,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/auth/signup",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/auth/signup",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"auth",
@@ -88,12 +89,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/auth/signin",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/auth/signin",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"auth",
@@ -149,12 +151,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/users",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/users",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"users"
@@ -182,12 +185,13 @@
 					"urlencoded": []
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/users",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/users",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"users"
@@ -202,12 +206,13 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/users/29",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/users/29",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"users",
@@ -258,12 +263,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/users/search/jane",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/users/search/jane",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"users",
@@ -280,12 +286,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/users/29",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/users/29",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"users",
@@ -323,12 +330,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/users/29",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/users/29",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"users",
@@ -397,12 +405,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/rooms",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/rooms",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"rooms"
@@ -471,12 +480,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/rooms/55",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/rooms/55",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"rooms",
@@ -543,12 +553,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/rooms",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/rooms",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"rooms"
@@ -616,12 +627,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/rooms/4",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/rooms/4",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"rooms",
@@ -690,12 +702,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/rooms/4",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/rooms/4",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"rooms",
@@ -770,12 +783,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/rooms/59",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/rooms/59",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"rooms",
@@ -795,26 +809,23 @@
 					"formdata": [
 						{
 							"key": "tenPhong",
-							"value": "tenPhong 2",
+							"value": "Master Room 2",
 							"type": "text"
 						},
 						{
 							"key": "khach",
-							"value": "3",
-							"type": "text",
-							"disabled": true
+							"value": "2",
+							"type": "text"
 						},
 						{
 							"key": "phongNgu",
 							"value": "3",
-							"type": "text",
-							"disabled": true
+							"type": "text"
 						},
 						{
 							"key": "giuong",
 							"value": "3",
-							"type": "text",
-							"disabled": true
+							"type": "text"
 						},
 						{
 							"key": "phongTam",
@@ -823,41 +834,38 @@
 						},
 						{
 							"key": "moTa",
-							"value": "3333333333333333333333333333333333",
-							"type": "text",
-							"disabled": true
+							"value": "Nhà đẹp 2",
+							"type": "text"
 						},
 						{
 							"key": "giaTien",
 							"value": "3",
-							"type": "text",
-							"disabled": true
+							"type": "text"
 						},
 						{
 							"key": "maViTri",
 							"value": "4",
-							"type": "text",
-							"disabled": true
+							"type": "text"
 						},
 						{
 							"key": "hinhAnh",
-							"value": "",
-							"type": "text",
-							"disabled": true
+							"type": "file",
+							"src": "/C:/Users/trmth/Desktop/1.jpg"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/rooms/32",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/rooms/59",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"rooms",
-						"32"
+						"59"
 					]
 				}
 			},
@@ -872,70 +880,29 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "tenPhong",
-							"value": "tenPhong 2",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "khach",
-							"value": "3",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "phongNgu",
-							"value": "3",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "giuong",
-							"value": "3",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "phongTam",
-							"value": "3",
-							"type": "text"
-						},
-						{
-							"key": "moTa",
-							"value": "3333333333333333333333333333333333",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "giaTien",
-							"value": "3",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "maViTri",
-							"value": "4",
-							"type": "text",
-							"disabled": true
-						},
-						{
 							"key": "hinhAnh",
 							"type": "file",
-							"src": "/C:/Users/trmth/Pictures/anh3.PNG"
+							"src": "/C:/Users/trmth/Desktop/1.jpg"
+						},
+						{
+							"key": "id",
+							"value": "3",
+							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/rooms/32",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/rooms/upload_image_room",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"rooms",
-						"32"
+						"upload_image_room"
 					]
 				}
 			},
@@ -1007,12 +974,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/location",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/location",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"location"
@@ -1027,37 +995,38 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
+					"mode": "formdata",
+					"formdata": [
 						{
 							"key": "tenViTri",
-							"value": "tenViTri",
+							"value": "tenVirwe4455",
 							"type": "text"
 						},
 						{
 							"key": "tinhThanh",
-							"value": "tinhThanh",
+							"value": "tinhThanh 2",
 							"type": "text"
 						},
 						{
 							"key": "quocGia",
-							"value": "quocGia",
+							"value": "quocGia 2",
 							"type": "text"
 						},
 						{
 							"key": "hinhAnh",
-							"value": "hinhAnh",
-							"type": "text"
+							"type": "file",
+							"src": "/C:/Users/trmth/Pictures/anh3.PNG"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/location",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/location",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"location"
@@ -1155,16 +1124,17 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/location/2",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/location/3",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"location",
-						"2"
+						"3"
 					]
 				}
 			},
@@ -1201,16 +1171,17 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/location/2",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/location/21",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"location",
-						"2"
+						"21"
 					]
 				}
 			},
@@ -1222,41 +1193,44 @@
 				"method": "PUT",
 				"header": [],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
+					"mode": "formdata",
+					"formdata": [
 						{
 							"key": "tenViTri",
-							"value": "tenViTri",
+							"value": "tenViTri 3",
 							"type": "text"
 						},
 						{
 							"key": "tinhThanh",
-							"value": "tinhThanh",
-							"type": "text"
+							"value": "Hanoi  updated",
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "quocGia",
-							"value": "quocGia",
-							"type": "text"
+							"value": "Vietnam updated",
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "hinhAnh",
-							"value": "hinhAnh",
-							"type": "text"
+							"type": "file",
+							"src": "/C:/Users/trmth/Desktop/1.jpg"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/location/2",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/location/3",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"location",
-						"2"
+						"3"
 					]
 				}
 			},
@@ -1283,12 +1257,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/location/upload_image_location",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/location/upload_image_location",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"location",
@@ -1322,12 +1297,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/comments",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/comments",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"comments"
@@ -1349,16 +1325,17 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/comments/xinchao/4",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/comments/get-comment-by-room/4",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"comments",
-						"xinchao",
+						"get-comment-by-room",
 						"4"
 					]
 				}
@@ -1389,15 +1366,18 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/comments",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/comments/4/4",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
-						"comments"
+						"comments",
+						"4",
+						"4"
 					]
 				}
 			},
@@ -1424,12 +1404,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/comments/4",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/comments/4",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"comments",
@@ -1475,12 +1456,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/comments",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/comments",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"comments"
@@ -1525,12 +1507,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/comments/5",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/comments/5",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"comments",
@@ -1583,12 +1566,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/booking",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/booking",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"booking"
@@ -1640,12 +1624,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/booking/5",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/booking/5",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"booking",
@@ -1698,12 +1683,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/booking/get-booking-user/5",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/booking/get-booking-user/5",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"booking",
@@ -1750,12 +1736,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/booking",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/booking",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"booking"
@@ -1800,12 +1787,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/booking/4",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/booking/4",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"booking",
@@ -1830,12 +1818,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/worksheet/update_row?searchValue=8&sheetName=MinhThanh1",
-					"protocol": "http",
+					"raw": "https://api.selcoool.com/api/worksheet/update_row?searchValue=8&sheetName=MinhThanh1",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"api",
+						"selcoool",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"worksheet",
